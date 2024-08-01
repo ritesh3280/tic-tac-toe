@@ -1,38 +1,149 @@
+/* General styles */
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Arial", sans-serif;
+  background-color: #f8f9fa;
+}
+
 .App {
-  text-align: center;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: url("./img/bg.jpeg") no-repeat center center;
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Board styles */
+.board {
+  width: 90vmin;
+  height: 90vmin;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  text-align: center;
+  border-radius: 15px;
+  position: relative;
+  z-index: 1;
+  border: none;
 }
 
-.App-link {
-  color: #61dafb;
+.row {
+  width: 100%;
+  height: 33.33%;
+  display: flex;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
+/* Square styles */
+.square {
+  flex: 1;
+  height: 100%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10vmin;
+  background-color: #f5f5dc; /* Light beige background for squares */
+  font-weight: bold;
+  border: 1px solid #d2691e; /* Subtle border for better visibility */
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.square:hover {
+  transform: scale(1.05);
+}
+
+.square:active {
+  transform: scale(0.95);
+}
+
+/* Title styles */
+.title {
+  font-size: 50px;
+  color: #d2691e; /* Dark brown color for the title */
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+  font-family: "Cursive", sans-serif;
+  z-index: 1;
+}
+
+/* Overlay styles */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 5;
+  opacity: 0;
+  animation: fadeIn 0.5s forwards;
+}
+
+@keyframes fadeIn {
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+  }
+}
+
+.message {
+  font-size: 36px;
+  color: #ffffff;
+  background: #d2691e; /* Dark brown background for the message */
+  padding: 20px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  font-family: "Cursive", sans-serif;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(210, 105, 30, 0.7);
+  transform: scale(0);
+  animation: popUp 0.5s forwards;
+}
+
+@keyframes popUp {
+  to {
+    transform: scale(1);
+  }
+}
+
+/* Button styles */
+button {
+  border: none;
+  padding: 12px 30px;
+  border-radius: 25px;
+  background: #d2691e; /* Dark brown background for the button */
+  color: #ffffff;
+  box-shadow: 0 4px 15px rgba(210, 105, 30, 0.7);
+  font-size: 24px;
+  font-family: "Cursive", sans-serif;
+  letter-spacing: 1px;
+  transition: background 0.3s, transform 0.2s;
+  transform: scale(0);
+  animation: popUp 0.5s 0.5s forwards;
+}
+
+button:hover {
+  background: #c45c20; /* Slightly darker brown on hover */
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+button:active {
+  background: #b04f19; /* Even darker brown on active */
+}
+
+@keyframes popUp {
+  to {
+    transform: scale(1);
   }
 }
